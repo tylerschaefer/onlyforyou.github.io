@@ -696,41 +696,101 @@
 
   <script>
     // Data
-    const STORAGE_KEY = 'love-note-data';
+
     const EMOJIS = ['💕', '✨', '🌸', '💫', '🦋', '🌹', '💖', '🌷', '💝', '🍀', '☀️', '🌈'];
     
-    let data = loadData();
+    let data = getDefaultData();
     let selectedCategoryId = null;
     let selectedEmoji = '💕';
 
-    function loadData() {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        try {
-          return JSON.parse(stored);
-        } catch (e) {
-          return getDefaultData();
-        }
-      }
-      return getDefaultData();
-    }
 
-    function getDefaultData() {
-      return {
-        title: 'Für dich ♡',
-        subtitle: 'Klicke auf eine Kategorie, um zu lesen was ich dir sagen möchte...',
-        categories: [
-          { id: '1', title: 'Warum ich dich liebe', content: '', emoji: '💕' },
-          { id: '2', title: 'Unsere schönsten Momente', content: '', emoji: '✨' },
-          { id: '3', title: 'Was ich dir verspreche', content: '', emoji: '💫' }
-        ],
-        isLocked: false
-      };
-    }
+function getDefaultData() {
+  return {
+    title: '❤️',
+    subtitle: 'Ich wollte es dir eigentlich basteln, weil ich gemerkt habe dass ich dir nicht immer das sagen kann was ich sagen sollte...',
 
-    function saveData() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
+    categories: [
+      {
+        id: '1',
+        title: 'Wenn du eifersüchtig bist:',
+        emoji: '💕',
+        content: `Ich sag es dir offen und ehrlich, du machst dir zu viele Sorgen und ich weiß ich auch. Ich habe eingesehen wenn du etwas von jemand anderem wollen würdest, würde es für mich keine Möglichkeit geben das zu verhindern. So ist das für dich bei mir auch, du könntest nichts ändern. Aber es gibt nichts was du verhindern musst. Denk an das eine mal wo ich dich vollgeheult hab weil ich nur im TRAUM fremdgegangen bin. Ich habe nur für dich Gefühle, sei dir dabei sicher. Dich gibt es für mich nur einmal. Meine Liebe zu dir gibt es auch nur einmal.`
+      },
+      {
+        id: '2',
+        title: 'Wenn ich wütend bin:',
+        emoji: '🌸',
+        content: `Bitte denke nicht dass es jetzt vorbei ist. Wenn ich wütend wegen etwas bin, heißt das nicht dass meine Liebe für dich in dem Moment ausgeblendet ist. Im Gegenteil, dass es mich wütend macht zeigt erst dass ich dich liebe, weil ich in dem Moment von meinen Emotionen für dich überfordert bin. Ich möchte nicht dass du Angst vor mir hast und wenn du merkst dass ich dir zu laut werde oder wenn dir das zittern Angst macht. Bitte geh dann raus. Ich nehm dir das nicht böse, nimm dir alle Zeit die du brauchst. Ich weiß und verstehe dass du es magst  Streit schnell zu klären. Aber es bringt nichts wenn es dann zu reingesteigert wird. Manchmal braucht es eine kurze Atempause, damit die Atmosphäre weniger angespannt ist. Aber mal im ernst, falls es jemals dazu kommen sollt (und ich hoffe für mich dass es nie so weit kommt), dass ich dich im Streit beleidige, dann darfst du mir offiziell eine Backpfeife geben und das meine ich ernst.`
+      },
+      {
+        id: '3',
+        title: 'Wenn du uncomfy bist:',
+        emoji: '🦋',
+        content: `Wir wissen beide dass niemand perfekt ist, ich nicht und du nicht. Das wollen wir auch nicht sein, jeder hat seine Ecken und Kanten, das macht uns einzigartig. Wenn du unzufrieden mit dir selbst bist, denk dran ich habe mich in alles von dir Verliebt, ich habe mich nicht nur in deine securities, sondern auch in deine Insecurities verliebt. Auch wenn du etwas bei dir nicht mehr schön findest, kannst du dir sicher sein, ich liebe es, ich liebe alles von dir. Aber wenn dich wirklich etwas so stört, dass du damit nicht klarkommst, dann bin ich immer an deiner Seite um dich mit dir zusammen wieder comfy zu machen. Eine Sache die ich besonders nochmal betonen möchte: Mach dir wenn du uncomfy bist nie Druck wegen Knick Knack. Ich weiß dass ich sehr oft sehr sexuell bin, aber ich würde es dir niemals übel nehmen wenn du sagst du willst gerade nicht oder fühlst dich nicht wohl. Falls ich merke dass ich doch zu horny bin und wieder anfange, dann geh ich kurz und mache solo. Ich möchte nicht dass du denkst du hättest irgendeine Pflicht mir damit zu helfen. Ich mag es auch nicht dass ich so eine hohe libido habe.`
+      },
+	  {
+		id: "4",
+		title: "50 Dinge die ich an dir Liebe",
+		emoji: "💝",
+		content:`1. Dein Lächeln
+			2. Dein Lachen
+			3. Wie du mir ein Gefühl von Sicherheit gibst
+			4. Deine Stimme
+			5. Deine Augen
+			6. Unsere Umarmungen
+			7. Unsere Küsse
+			8. Deine Passion für deine Interessen (Handball und Sauerteig)
+			9. Wie du mich anguckst
+			10. Wie du mir immer sagst dass du mich liebst
+			11. Deine Stimme am Telefon
+			12. Dein Blick wenn ich bei dir ankomme
+			13. Wie du dir Sorgen machst (Zeigt mir dass du es ernst meinst)
+			14. Deine Ingentillenz
+			15. Dass du loyal bist
+			16. Dass du mir zuhörst
+			17. Dass du mich verstehst
+			18. Dass du auch mit Dingen weitermachst wenn ich sage dass ich damit nichts anfangen kann (BS)
+			19. Dass du Glücklichkeit in mir auslöst
+			20. Unsere Morgen und Abendrituale
+			21. Wie wir kuschelnd einschlafen
+			22. Dein Drang alles zu klären 
+			23. Deine Haare
+			24. Dein Geruch
+			25. Deine Sorgen um unsere Zukunft
+			26. Deine festen Ziele für dein Berufsleben
+			27. Dein Durchsetzungsvermögen
+			28. Dass du mir verzeihst
+			29. Dass du mich verteidigst
+			30. Deine (gespielte) Eifersucht
+			31. Unsere guten Tage zusammen
+			32. Unsere schlechten Tage (Machen die guten Tage zu etwas besonderem)
+			33. Dass du immer für mich da bist
+			34. Einfach mit dir zu kuscheln
+			35. Wie du gekrault werden willst
+			36. Wie du massiert werden willst
+			37. Auch dein Schuldgefühl weil du mich selten kraulst (Ist pp nicht schlimm)
+			38. Dass du verstehst wenn ich nicht alles bezahlen kann
+			39. Dass du keine social Media Erwartungen hast
+			40. Dass du mir jeden Tag reels schickst
+			41. Dass wir zusammen zocken können
+			42. Dass du auch Rücksicht auf meine Probleme nimmst
+			43. Dass wir oft im call schlafen
+			44. Dass du so kuschelig bist
+			45. Dein Bedürfnis nach Zuneigung
+			46. Dass du auch noch ein inneres Kind hast
+			47. Dass du mit mir auch Sachen guckst, die du nicht magst
+			48. Deine Erwachsene Seite
+			49. Dass wir in super vielen Themen der gleichen Meinung sind
+			50. Dass du du bist❤️`
+		}, 
+	
+	],
+
+    isLocked: true
+  };
+}
+
+
 
     function render() {
       // Update header
@@ -778,54 +838,23 @@
     }
 
     function showDetail(id) {
-      selectedCategoryId = id;
-      const cat = data.categories.find(c => c.id === id);
-      if (!cat) return;
+  selectedCategoryId = id;
+  const cat = data.categories.find(c => c.id === id);
+  if (!cat) return;
 
-      document.getElementById('header').classList.add('hidden');
-      document.getElementById('main-content').classList.add('hidden');
-      document.getElementById('detail-view').classList.remove('hidden');
+  document.getElementById('header').classList.add('hidden');
+  document.getElementById('main-content').classList.add('hidden');
+  document.getElementById('detail-view').classList.remove('hidden');
 
-      const content = document.getElementById('detail-content');
-      
-      if (data.isLocked) {
-        content.innerHTML = `
-          <div class="detail-emoji">${cat.emoji}</div>
-          <h2 class="detail-title">${cat.title}</h2>
-          <p class="detail-text">${cat.content || 'Noch kein Text vorhanden...'}</p>
-        `;
-      } else {
-        content.innerHTML = `
-          <div class="form-group">
-            <label class="form-label">Emoji wählen</label>
-            <div class="emoji-selector" id="detail-emoji-selector"></div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Kategorie-Titel</label>
-            <input type="text" class="input" id="detail-title" value="${cat.title}" placeholder="z.B. Warum ich dich liebe...">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Dein Text</label>
-            <textarea class="textarea" id="detail-text" placeholder="Schreibe hier deinen liebevollen Text...">${cat.content}</textarea>
-          </div>
-        `;
-        
-        renderEmojiSelector('detail-emoji-selector', cat.emoji, (emoji) => {
-          cat.emoji = emoji;
-          saveData();
-        });
+  const content = document.getElementById('detail-content');
 
-        document.getElementById('detail-title').oninput = (e) => {
-          cat.title = e.target.value;
-          saveData();
-        };
+  content.innerHTML = `
+    <div class="detail-emoji">${cat.emoji}</div>
+    <h2 class="detail-title">${cat.title}</h2>
+    <p class="detail-text">${cat.content}</p>
+  `;
+}
 
-        document.getElementById('detail-text').oninput = (e) => {
-          cat.content = e.target.value;
-          saveData();
-        };
-      }
-    }
 
     function goBack() {
       selectedCategoryId = null;
@@ -876,7 +905,7 @@
         content: '',
         emoji: selectedEmoji
       });
-      saveData();
+      
       closeAddModal();
       render();
     }
@@ -888,7 +917,7 @@
     function deleteCategory(id) {
       if (confirm('Möchtest du diese Kategorie wirklich löschen?')) {
         data.categories = data.categories.filter(c => c.id !== id);
-        saveData();
+        
         render();
       }
     }
@@ -904,7 +933,7 @@
 
     function lockNote() {
       data.isLocked = true;
-      saveData();
+      
       closeLockModal();
       render();
     }
@@ -921,7 +950,7 @@
     function saveHeader() {
       data.title = document.getElementById('title-input').value || 'Für dich ♡';
       data.subtitle = document.getElementById('subtitle-input').value || 'Klicke auf eine Kategorie...';
-      saveData();
+      
       document.getElementById('header-display').classList.remove('hidden');
       document.getElementById('header-edit').classList.add('hidden');
       render();
